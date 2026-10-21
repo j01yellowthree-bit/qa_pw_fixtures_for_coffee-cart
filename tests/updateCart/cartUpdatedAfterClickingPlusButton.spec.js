@@ -2,8 +2,8 @@
 import { test } from '../fixtures/fixtures';
 import { COFFEE_PRICES } from '../../src/constants.js';
 import {
-  
   priceFormatStr,
+  totalPriceFormatStr,
 } from '../../src/common/helpers/getPriceForQuantity.ts';
 
 test('Assert cart updated correctly after clicking plus for drinks', async ({
@@ -42,9 +42,10 @@ test('Assert cart updated correctly after clicking plus for drinks', async ({
   );
 
   await cartPage.assertTotalCheckoutContainsValue(
-    `Total: $${(
+    totalPriceFormatStr(
       COFFEE_PRICES.espresso * 2 +
-      COFFEE_PRICES.cappuccino * 2
-    ).toFixed(2)}`,
+        COFFEE_PRICES.cappuccino * 2,
+      1,
+    ),
   );
 });
