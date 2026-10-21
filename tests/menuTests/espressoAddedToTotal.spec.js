@@ -1,11 +1,9 @@
-import { test } from '@playwright/test';
-import { MenuPage } from '../../src/pages/MenuPage';
 
-test('Check Espresso cost is added to Total on menu page', async ({ page }) => {
-  const menuPage = new MenuPage(page);
+import { test } from '../fixtures/fixtures';
+import { totalPriceFormatStr } from '../../src/common/helpers/getPriceForQuantity.ts';
 
+test('Check Espresso cost is added to Total on menu page', async ({ menuPage }) => {
   await menuPage.open();
   await menuPage.clickEspressoCup();
-
-  await menuPage.assertTotalCheckoutContainsValue('Total: $10.00');
+  await menuPage.assertTotalCheckoutContainsValue(totalPriceFormatStr(1));
 });
