@@ -45,7 +45,7 @@ test('Assert cart updated correctly after clicking plus for drinks', async ({
     totalPriceFormatStr(
       COFFEE_PRICES.espresso * 2 +
         COFFEE_PRICES.cappuccino * 2,
-      1,
+      
     ),
   );
 });
